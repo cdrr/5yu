@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>雾雨</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <!--顶部信息栏-->
+    <header id="header">
+        <div id="topcon">
+            <h2>
+                全部
+            </h2>
+            <div id="infoico">
+                <!--<span id="refresh"></span>-->
+                <span id="message"></span>
+                <span id="set"></span>
+            </div>
+        </div>
+    </header>
+    <div class="flexbox">
+<!--左侧菜单-->
+        <aside id="menu">
+        <ul class="menulist">
+            <li>博丽神社</li>
+            <li>聊天室</li>
+            <li><a id="blogger" href="#/list">订阅</a></li>
+            <li>博客</li>
+            <li>雾雨邸</li>
+        </ul>
+    </aside>
+
+<!--中部内容-->
+        <div id="content">
+        <!--ngview载入部分-->
+        <div ng-view></div>
+        <!--神社部分-->
+        <div id="toho">
+            <!--星座输入框-->
+            <ul id="signGet" ng-controller="signGet">
+                <li data="{{$index}}" ng-repeat="sign in signitems" ng-click="getID($event)">{{sign.name}}</li>
+            </ul>
+            <!--卡片表现层-->
+            <div id="mainCon" ng-controller="cardGet">
+                <!--占卜效果-->
+                <div id="cardLoad">
+                    <div id="front" class="fliped"></div>
+                    <div id="back" class="flip"></div>
+                </div>
+                <!--占卜欢迎-->
+                <div id="cardNone">
+                    <p>今天还没占卜哦，快推倒喇叭子＼(^ω^＼).</p>
+                    <img ng-click="cardPlan()" src="image/labazi.png" alt="喇叭子"/>
+                </div>
+                <div id="cardCon">
+                    <div id="cardShow">
+                        <img ng-src="{{ imgurl }}" />
+                        <p  id="giveTu">
+                            <img ng-click="cardPlan()" src="image/labazione.png" alt="小喇叭子"/>
+                        </p>
+                    </div>
+                    <!--卡片吐槽部分-->
+                    <div id="comment" ng-model="signData">
+                            <dl ng-repeat="sign in signData">
+                                <dt>{{sign["title"]}}</dt>
+                                <dd>{{sign["rank"] | rank}}
+                                {{sign["value"]}}</dd>
+                            </dl>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/lib/angular.js"></script>
+<script type="text/javascript" src="js/lib/angular-route.js"></script>
+<script type="text/javascript" src="js/lib/angular-sanitize.js"></script>
+<script src="js/service/sign.js"></script>
+<script src="js/filter/filter.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>

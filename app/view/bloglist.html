@@ -1,0 +1,14 @@
+<div id="blogs" ng-model="blogsData">
+    <article class="post" ng-repeat="blog in blogsData">
+        <h2 class="post-header">
+            {{blog.title}}
+        </h2>
+        <div class="post-info">
+            <span class="post-site">{{blog.site}}</span>
+            <span class="post-author">{{blog.author}}</span>
+            <span class="post-time">{{blog.time}}</span>
+        </div>
+        <div class="post-content" ng-bind-html="contentHtml(blog.content)">
+        </div>
+    </article>
+</div>

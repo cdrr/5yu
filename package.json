@@ -1,0 +1,15 @@
+{
+    "name": "5yu",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "index.js"
+    },
+    "dependencies": {
+        "async": "0.2.1.0",
+        "mongoose": "3.8.11",
+        "superagent": "0.18.0",
+        "Q": "0.9.7",
+        "express": "4.4.3"
+    }
+}
